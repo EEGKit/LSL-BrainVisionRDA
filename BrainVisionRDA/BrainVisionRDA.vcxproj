@@ -171,6 +171,7 @@ echo F| xcopy /y "C:\Qt\Qt5.13.1\5.13.1\msvc2017\bin\Qt5Gui.dll" "$(SolutionDir)
 echo F| xcopy /y "C:\Qt\Qt5.13.1\5.13.1\msvc2017\bin\Qt5Widgets.dll" "$(SolutionDir)bin\$(Platform)\$(Configuration)\Qt5Widgets.dll"
 echo F| xcopy /y "$(SolutionDir)..\brainvision_config.cfg" "$(SolutionDir)bin\$(Platform)\$(Configuration)\brainvision_config.cfg"
 echo F| xcopy /y "C:\Users\David.Medine\LSL\bin\liblsl32.dll" "$(SolutionDir)bin\$(Platform)\$(Configuration)\liblsl32.dll"
+echo F| xcopy /y "$(SolutionDir)..\LICENSE.txt" "$(SolutionDir)bin\$(Platform)\$(Configuration)\LICENSE.txt"
 mkdir "$(SolutionDir)bin\$(Platform)\BrainVisionRDA_Win32"
 xcopy /y /s  "$(SolutionDir)bin\$(Platform)\$(Configuration)" "$(SolutionDir)bin\$(Platform)\BrainVisionRDA_Win32"
 </Command>
@@ -200,6 +201,7 @@ echo F| xcopy /y "C:\Qt\Qt5.13.1\5.13.1\msvc2017_64\bin\Qt5Gui.dll" "$(SolutionD
 echo F| xcopy /y "C:\Qt\Qt5.13.1\5.13.1\msvc2017_64\bin\Qt5Widgets.dll" "$(SolutionDir)bin\$(Platform)\$(Configuration)\Qt5Widgets.dll"
 echo F| xcopy /y "$(SolutionDir)..\brainvision_config.cfg" "$(SolutionDir)bin\$(Platform)\$(Configuration)\brainvision_config.cfg"
 echo F| xcopy /y "C:\Users\David.Medine\LSL\bin\liblsl64.dll" "$(SolutionDir)bin\$(Platform)\$(Configuration)\liblsl64.dll"
+echo F| xcopy /y "$(SolutionDir)..\LICENSE.txt" "$(SolutionDir)bin\$(Platform)\$(Configuration)\LICENSE.txt"
 mkdir "$(SolutionDir)bin\$(Platform)\BrainVisionRDA_x64"
 xcopy /y /s  "$(SolutionDir)bin\$(Platform)\$(Configuration)" "$(SolutionDir)bin\$(Platform)\BrainVisionRDA_x64"</Command>
     </PostBuildEvent>

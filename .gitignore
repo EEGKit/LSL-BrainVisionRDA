@@ -1,3 +1,8 @@
 ui_*.h
-build/
-CMakeLists.txt.user
+BrainVisionRDA/.vs/
+BrainVisionRDA/bin/
+BrainVisionRDA/Debug/
+BrainVisionRDA/Release/
+BrainVisionRDA/Resources/
+*.dll
+*.exe

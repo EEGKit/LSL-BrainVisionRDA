@@ -27,8 +27,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     explicit MainWindow(QWidget* parent, const std::string& config_file);
     ~MainWindow();
+    struct t_AppVersion {
+        int32_t Major;
+        int32_t Minor;
+    };
+    t_AppVersion m_AppVersion;
 
 private slots:
     // config file dialog ops (from main menu)

@@ -22,10 +22,15 @@ using boost::asio::ip::tcp;
 const double sample_age = 0.02;			// assumed buffer lag
 const int skip_blocks_after_reset = 15;	// number of data blocks to skip after an amplifier reset
 
+#define LSLVERSIONSTREAM(version) (version/100) << "." << (version%100)
+#define APPVERSIONSTREAM(version) version.Major << "." << version.Minor
+
 MainWindow::MainWindow(QWidget* parent, const std::string& config_file) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
 {
+	m_AppVersion.Major = 1;
+	m_AppVersion.Minor = 13;
 	ui->setupUi(this);
 
 	// parse startup config file
@@ -188,6 +193,14 @@ void MainWindow::read_thread(QString serverIP) {
 		std::string lsl_id = QString("RDA %1:%2").arg(serverIP).arg(RDA_Port).toStdString();
 		long markerCount;
 		long maxMarkerCount = pow(2.0, 24) - 1;
+		int32_t lslProtocolVersion = lsl::protocol_version();
+		int32_t lslLibVersion = lsl::library_version();
+		std::stringstream ssProt;
+		ssProt << LSLVERSIONSTREAM(lslProtocolVersion);
+		std::stringstream ssLSL;
+		ssLSL << LSLVERSIONSTREAM(lslLibVersion);
+		std::stringstream ssApp;
+		ssApp << APPVERSIONSTREAM(m_AppVersion);
 
 		while (!stop_) {
 			switch (connectionPhase) {
@@ -254,6 +267,11 @@ void MainWindow::read_thread(QString serverIP) {
 
 							lsl_info->desc().append_child("acquisition")
 								.append_child_value("manufacturer", "Brain Products");
+
+							lsl_info->desc().append_child("versions")
+								.append_child_value("lsl_protocol", ssProt.str())
+								.append_child_value("liblsl", ssLSL.str())
+								.append_child_value("App", ssApp.str());
 							// make a new data outlet
 							lsl_outlet.reset(new lsl::stream_outlet(*lsl_info.get()));
 

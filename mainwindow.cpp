@@ -47,6 +47,19 @@ MainWindow::MainWindow(QWidget* parent, const std::string& config_file) :
 	QObject::connect(this, SIGNAL(sendMessage(QString)), this, SLOT(statusMessage(QString)));
 	QObject::connect(ui->actionLoad_Configuration, SIGNAL(triggered()), this, SLOT(load_config_dialog()));
 	QObject::connect(ui->actionSave_Configuration, SIGNAL(triggered()), this, SLOT(save_config_dialog()));
+	QObject::connect(ui->actionVersions, SIGNAL(triggered()), this, SLOT(versions_dialog()));
+}
+
+void MainWindow::versions_dialog()
+{
+
+	int32_t lslProtocolVersion = lsl::protocol_version();
+	int32_t lslLibVersion = lsl::library_version();
+	std::stringstream ss;
+	ss << "lsl protocol: " << LSLVERSIONSTREAM(lslProtocolVersion) << "\n" <<
+		"liblsl: " << LSLVERSIONSTREAM(lslLibVersion) << "\n" <<
+		"App: " << APPVERSIONSTREAM(m_AppVersion);
+	QMessageBox::information(this, "Versions", ss.str().c_str(), QMessageBox::Ok);
 }
 
 

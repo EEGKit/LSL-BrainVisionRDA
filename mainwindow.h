@@ -43,7 +43,7 @@ private slots:
     void set_port(int idx);
     // start the BrainVision RDA connection
     void link_rda();
-
+    void versions_dialog();
     // close event (potentially disabled)
     void closeEvent(QCloseEvent* ev);
 

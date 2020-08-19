@@ -23,7 +23,7 @@ const double sample_age = 0.02;			// assumed buffer lag
 const int skip_blocks_after_reset = 15;	// number of data blocks to skip after an amplifier reset
 
 #define LSLVERSIONSTREAM(version) (version/100) << "." << (version%100)
-#define APPVERSIONSTREAM(version) version.Major << "." << version.Minor
+#define APPVERSIONSTREAM(version) version.Major << "." << version.Minor << "." << version.Patch
 
 MainWindow::MainWindow(QWidget* parent, const std::string& config_file) :
 	QMainWindow(parent),
@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget* parent, const std::string& config_file) :
 {
 	m_AppVersion.Major = 1;
 	m_AppVersion.Minor = 13;
+	m_AppVersion.Patch = 2;
 	ui->setupUi(this);
 
 	// parse startup config file

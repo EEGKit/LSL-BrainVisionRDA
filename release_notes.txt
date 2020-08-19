@@ -1,0 +1,3 @@
+BrainAmpVisionRDA 1.13.2
+-added patch number to versioning in app
+-removed boost/shared_ptr dependency

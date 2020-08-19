@@ -33,6 +33,7 @@ public:
     struct t_AppVersion {
         int32_t Major;
         int32_t Minor;
+		int32_t Patch;
     };
     t_AppVersion m_AppVersion;
 
